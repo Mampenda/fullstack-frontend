@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -21,7 +22,9 @@ export default function Navbar() {
           </button>
           {/* <button className="btn btn-outline-light">Create Poll</button>
           <button className="btn btn-outline-light">Log In</button> */}
-          <button className="btn btn-outline-light">Add User</button>
+          <Link className="btn btn-outline-light" to="AddUser">
+            Add User
+          </Link>
         </div>
       </nav>
     </div>

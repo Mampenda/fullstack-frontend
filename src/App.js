@@ -3,6 +3,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import AddUser from "./users/AddUser";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/AddUser" element={<AddUser />} />
         </Routes>
       </Router>
     </div>

@@ -25,7 +25,7 @@ export default function EditUser() {
     setUser({ ...user, [e.target.name]: e.target.value }); //Will keep on adding the ne
   };
 
-  //Function that calls loads user data and displays it on edit user page
+  //Calls loadUsers() and displays data on edit user page (If we don't use empty array as arg, this will load infinitely)
   useEffect(() => {
     //Load user data
     const loadUser = async () => {

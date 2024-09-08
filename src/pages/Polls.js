@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Polls() {
   //Object for storing user information (initialized as empty array)
   const [users, setUsers] = useState([]);
 
-  //Id object
-  const { id } = useParams();
-
-  //Calls loadUsers() and displays data on edit user page (If we don't use empty array as arg, this will load infinitely)
+  // Runs once only when the page loads (If we don't use empty array as arg, this will load infinitely)
   useEffect(() => {
     loadUsers();
   }, []);
-
-  // Delete user function
-  const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8080/user/${id}`);
-    loadUsers();
-  };
 
   //Load users using async/await (since java is executing line by line)
   const loadUsers = async () => {
@@ -36,9 +27,9 @@ export default function Home() {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Username</th>
-              <th scope="col">E-mail</th>
+              <th scope="col">Creator</th>
+              <th scope="col">Title</th>
+              <th scope="col">Preview</th>
               <th scope="col">Action</th>
               {/* <th scope="col">Password</th>
               <th scope="col">Polls</th> */}
@@ -57,19 +48,14 @@ export default function Home() {
                 {/* <td>{user.password}</td>
                 <td>{user.polls}</td> */}
                 <td>
-                  <button className="btn btn-primary mx-2">View</button>
+                  <button className="btn btn-primary mx-2">Vote</button>
                   <Link
                     className="btn btn-outline-primary mx-2"
                     to={`/EditUser/${user.id}`}
                   >
                     Edit
                   </Link>
-                  <button
-                    className="btn btn-danger mx-2"
-                    onClick={() => deleteUser(user.id)}
-                  >
-                    Delete
-                  </button>
+                  <button className="btn btn-danger mx-2">Delete</button>
                 </td>
               </tr>
             ))}

@@ -1,6 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddUser() {
+  let navigate = useNavigate();
+
   //Object for storing user information (initialized as empty strings)
   const [user, setUser] = useState({
     name: "",
@@ -18,14 +22,24 @@ export default function AddUser() {
   };
 
   //Pass input data to database
-  const onSubmit = (e) => {};
+  const onSubmitClick = async (e) => {
+    //Prevent url change when submit button is clicked
+    e.preventDefault();
+
+    //Post data in database
+    await axios.post("http://localhost:8080/user", user);
+
+    //Navigate to the home page
+    navigate("/");
+  };
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4">Register User</h2>
-          <form>
+          {/*Pass click event from form to onSubmitClick function*/}
+          <form onSubmit={(e) => onSubmitClick(e)}>
             <div className="mb-3">
               {/* <label htmlFor="Name" className="form-label">Name</label> */}
               <input

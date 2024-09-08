@@ -7,6 +7,7 @@ export default function Home() {
   const [users, setUsers] = useState([]);
 
   //Id object
+  // eslint-disable-next-line no-unused-vars
   const { id } = useParams();
 
   //Calls loadUsers() and displays data on edit user page (If we don't use empty array as arg, this will load infinitely)
@@ -57,7 +58,12 @@ export default function Home() {
                 {/* <td>{user.password}</td>
                 <td>{user.polls}</td> */}
                 <td>
-                  <button className="btn btn-primary mx-2">View</button>
+                  <Link
+                    className="btn btn-primary mx-2"
+                    to={`/ViewUser/${user.id}`}
+                  >
+                    View
+                  </Link>
                   <Link
                     className="btn btn-outline-primary mx-2"
                     to={`/EditUser/${user.id}`}

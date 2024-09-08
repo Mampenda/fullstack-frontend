@@ -35,6 +35,8 @@ export default function EditUser() {
 
     //Function call
     loadUser();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Pass input data to database

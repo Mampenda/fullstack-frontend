@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   //Object for storing user information (initialized as empty array)
@@ -48,7 +49,12 @@ export default function Home() {
                 <td>{user.polls}</td> */}
                 <td>
                   <button className="btn btn-primary mx-2">View</button>
-                  <button className="btn btn-outline-primary mx-2">Edit</button>
+                  <Link
+                    className="btn btn-outline-primary mx-2"
+                    to={`/EditUser/${user.id}`}
+                  >
+                    Edit
+                  </Link>
                   <button className="btn btn-danger mx-2">Delete</button>
                 </td>
               </tr>

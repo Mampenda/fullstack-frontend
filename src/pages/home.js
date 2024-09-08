@@ -40,6 +40,7 @@ export default function Home() {
               <th scope="col">Name</th>
               <th scope="col">Username</th>
               <th scope="col">E-mail</th>
+              {/* <th scope="col">Polls</th> */}
               <th scope="col">Action</th>
               {/* <th scope="col">Password</th>
               <th scope="col">Polls</th> */}
@@ -55,8 +56,7 @@ export default function Home() {
                 <td>{user.name}</td>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
-                {/* <td>{user.password}</td>
-                <td>{user.polls}</td> */}
+                {/* <td>{user.polls}</td> */}
                 <td>
                   <Link
                     className="btn btn-primary mx-2"

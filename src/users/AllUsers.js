@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-export default function Polls() {
+export default function AllUsers() {
   //Object for storing user information (initialized as empty array)
   const [users, setUsers] = useState([]);
 
-  // Runs once only when the page loads (If we don't use empty array as arg, this will load infinitely)
+  //Id object
+  // eslint-disable-next-line no-unused-vars
+  const { id } = useParams();
+
+  //Calls loadUsers() and displays data on edit user page (If we don't use empty array as arg, this will load infinitely)
   useEffect(() => {
     loadUsers();
   }, []);
+
+  // Delete user function
+  const deleteUser = async (id) => {
+    await axios.delete(`http://localhost:8080/user/${id}`);
+    loadUsers();
+  };
 
   //Load users using async/await (since java is executing line by line)
   const loadUsers = async () => {
@@ -27,12 +37,13 @@ export default function Polls() {
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Creator</th>
-              <th scope="col">Title</th>
-              <th scope="col">Preview</th>
+              <th scope="col">Name</th>
+              <th scope="col">Username</th>
+              <th scope="col">E-mail</th>
+              {/* <th scope="col">Polls</th> */}
               <th scope="col">Action</th>
               {/* <th scope="col">Password</th>
-              <th scope="col">Polls</th> */}
+            <th scope="col">Polls</th> */}
             </tr>
           </thead>
           <tbody>
@@ -45,22 +56,37 @@ export default function Polls() {
                 <td>{user.name}</td>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
-                {/* <td>{user.password}</td>
-                <td>{user.polls}</td> */}
+                {/* <td>{user.polls}</td> */}
                 <td>
-                  <button className="btn btn-primary mx-2">Vote</button>
+                  <Link
+                    className="btn btn-primary mx-2"
+                    to={`/ViewUser/${user.id}`}
+                  >
+                    View
+                  </Link>
                   <Link
                     className="btn btn-outline-primary mx-2"
                     to={`/EditUser/${user.id}`}
                   >
                     Edit
                   </Link>
-                  <button className="btn btn-danger mx-2">Delete</button>
+                  <button
+                    className="btn btn-danger mx-2"
+                    onClick={() => deleteUser(user.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <Link
+          className="btn btn-outline-primary mx-2 d-flex justify-content-center"
+          to="/AddUser"
+        >
+          Add User
+        </Link>
       </div>
     </div>
   );

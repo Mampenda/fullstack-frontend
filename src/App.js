@@ -1,3 +1,6 @@
+/*Client REACT web service on port 3000*/
+/*WANT 80 (http) or 444(https, whole world)*/
+
 import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./layout/Navbar";

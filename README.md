@@ -1,6 +1,6 @@
 # Bugs
 
-This is the front-end side of my polls-project, and it still has alot of bugs. On the back-end I only got the User-class to work and not Polls or VoteOptions, but I am working on it.
+This is the front-end side of my polls-project, and it still has a lot of bugs. On the back-end I only got the User-class to work and not Polls or VoteOptions, but I am working on it.
 
 Until the last commit, the front-end side for the user-class worked without errors, but now after I tried to implement the Polls-class and connect them to the same database, I keep getting Network or Runtime errors.
 
